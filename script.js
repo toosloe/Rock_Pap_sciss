@@ -14,6 +14,7 @@ Create variables for player and computer score, ask player which option they wan
 let player = 0;
 let computer = 0;
 let tie = 0;
+let replays = 0;
 
 let hand = ["rock", "paper", "scissors"];
 
@@ -23,9 +24,13 @@ function compHand(hand){
 }
 
 let count = 0;
+
+game();
 /*
 5 round game
 */
+
+function game(){
 while(count < 5){
 
     let choice = prompt("Rock, Paper or Scissors?");
@@ -89,21 +94,50 @@ while(count < 5){
 
     count++;
 }
-
 /*
 End of game stats
  */
 
 if(player > computer){
 
-    alert("Congratulations! You won! \nPlayer got: " + player + "\nComputer got: " + computer + "\nTied rounds: " + tie);
+    alert("Congratulations! You won! \nPlayer got: " + player + "\nComputer got: " + computer + "\nTied rounds: " + tie + "\nReplays: " + replays);
 
 }
 
 else if(computer > player){
-    alert("Oof! You lost! \nPlayer got: " + player + "\nComputer got: " + computer + "\nTied rounds: " + tie);
+    alert("Oof! You lost! \nPlayer got: " + player + "\nComputer got: " + computer + "\nTied rounds: " + tie + "\nReplays: " + replays);
     alert("Better luck next time!");
 }
 else {
-    alert("A...tie? How'd you do that?! \nPlayer got: " + player + "\nComputer got: " + computer + "\nTied rounds: " + tie);
+    alert("A...tie? How'd you do that?! \nPlayer got: " + player + "\nComputer got: " + computer + "\nTied rounds: " + tie + "\nReplays: " + replays);
 }
+/*
+Let players decide if they want to play again
+ */
+
+let decision = prompt("Do you want to play again?, type yes or no.");
+
+decision = decision.toLowerCase();
+
+switch(decision){
+    case "yes":
+        count = 0;
+        player = 0;
+        computer = 0;
+        tie = 0;  
+        alert("Next game!");
+        replays++;
+        game();
+        break;
+    case "no":
+        alert("No? Then see you again soon!");
+        break;
+    default:
+        alert("Hmmmm...You didnt select no or yes.\n Refresh the page if you wish to play again.");
+}
+}
+
+
+
+
+
